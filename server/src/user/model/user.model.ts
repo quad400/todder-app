@@ -1,8 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { AbstractSchema } from 'src/common/abstract/abstract.schema';
+import { Document } from 'mongoose';
+// import { AbstractSchema } from 'src/common/abstract/abstract.schema';
 
-@Schema({ versionKey: false, timestamps: true, strict: false })
-export class User extends AbstractSchema {
+export type UserType = User & Document;
+@Schema({ versionKey: false, timestamps: true, strict: false, _id: false })
+export class User extends Document {
   @Prop({
     type: String,
   })
